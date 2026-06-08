@@ -8,10 +8,10 @@ const Tab = createBottomTabNavigator();
 function HomeMenu() {
     return (
         <Tab.Navigator>
-            <Tab.Screen 
-                name="Home" 
-                component={Home} 
-                options={{ 
+            <Tab.Screen
+                name="Home"
+                component={Home}
+                options={{
                     headerShown: false, 
                     tabBarIcon: () => <AntDesign name="home" size={24} color="black"/> 
                 }} 

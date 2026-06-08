@@ -25,6 +25,12 @@ function Login(props) {
         }
     }
 
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            props.navigation.navigate('HomeMenu');
+        }
+    });
+
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Login</Text>
@@ -57,11 +63,10 @@ function Login(props) {
                 <Text style={styles.buttonText}>Entrar a la App</Text>
             </Pressable>
     
-            {/* 
             <Pressable style={styles.registerButton} onPress={() => props.navigation.navigate('Register')}>
                 <Text style={styles.registerText}>¿No tenés cuenta? Registrate</Text>
             </Pressable>  
-            */}
+            
         </View>
     )
 }

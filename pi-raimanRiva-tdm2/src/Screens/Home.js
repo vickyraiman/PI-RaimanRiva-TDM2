@@ -1,4 +1,5 @@
-import { View, Text } from 'react-native';
+import { View, Text, Pressable } from 'react-native';
+import { auth } from '../firebase/config';
 
 function Home() {
     return (
