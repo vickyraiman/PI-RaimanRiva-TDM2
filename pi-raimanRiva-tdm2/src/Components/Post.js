@@ -4,10 +4,10 @@ import firebase from "firebase";
 
 function Post(props){
 
-    let likes = props.post.likes.length;
+    let likes = props.post.likes;
 
-    if (likes === 0){
-        likes = '';
+    if (likes === undefined){
+        likes = [];
     }
     let miEmail = auth.currentUser.email;
     let likeado = likes.includes(miEmail);
@@ -37,24 +37,67 @@ function Post(props){
     }
 
     return(
-        <View>
-            <Text>{props.post.email}</Text>
-            <Text>{props.post.descripcion}</Text>
+    <View style={styles.card}>
+        <Text style={styles.email}>{props.post.email}</Text>
+        <Text style={styles.descripcion}>{props.post.descripcion}</Text>
 
-            <Text>Likes: {likes.length}</Text>
-                
-                {
-                    likeado ?
-                    <Pressable onPress={() => sacarLike()}>
-                        <Text>❤️</Text>
-                    </Pressable>
-                    :
-                    <Pressable onPress={() => darLike()}>
-                        <Text>🩶</Text>
-                    </Pressable>
-                }
-        </View>
-    )
+        <Text style={styles.likes}>Likes: {likes.length}</Text>
+            
+            {
+                likeado ?
+                <Pressable style={styles.likeButton} onPress={() => sacarLike()}>
+                    <Text style={styles.heart}>❤️</Text>
+                </Pressable>
+                :
+                <Pressable style={styles.likeButton} onPress={() => darLike()}>
+                    <Text style={styles.heart}>🩶</Text>
+                </Pressable>
+            }
+    </View>
+)
 }
+
+const styles = StyleSheet.create({
+    card: {
+        backgroundColor: '#fff',
+        borderWidth: 1,
+        borderColor: '#222',
+        borderRadius: 14,
+        padding: 14,
+        marginBottom: 12,
+        width: '100%',
+    },
+
+    email: {
+        fontSize: 12,
+        color: '#555',
+        fontWeight: 'bold',
+        marginBottom: 6,
+    },
+
+    descripcion: {
+        fontSize: 16,
+        color: '#222',
+        marginBottom: 10,
+        lineHeight: 22,
+    },
+
+    likes: {
+        fontSize: 14,
+        color: '#222',
+        marginBottom: 6,
+    },
+
+    likeButton: {
+        alignSelf: 'flex-start',
+    },
+
+    heart: {
+        fontSize: 22,
+    },
+});
+
+
+
 
 export default Post;
