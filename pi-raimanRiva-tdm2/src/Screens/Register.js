@@ -21,18 +21,21 @@ function Register(props) {
                     db.collection('users').add({
                         email: email,
                         username: username,
-                        createAt: Date.now()
+                        createdAt: Date.now()
                     })
+                })
+                .then(() => {
+                    return auth.signOut();
                 })
                 .then(() => {
                     setRegisterError('');
                     props.navigation.navigate('LogIn');
                 })
+
                 .catch(error => {
                     setRegisterError('No se pudo crear el usuario');
                 });
-        }
-        
+        }   
     }
 
     return (
@@ -73,6 +76,10 @@ function Register(props) {
 
             <Pressable style={styles.buttonBlue} onPress={() => onSubmit(email, password, username)}>
                 <Text style={styles.buttonText}>Registrarme</Text>
+            </Pressable>
+
+            <Pressable style={styles.registerButton} onPress={() => props.navigation.navigate('LogIn')}>
+                <Text style={styles.registerText}>¿Ya tenés cuenta?</Text>
             </Pressable>
         </View>
     );
@@ -130,6 +137,15 @@ const styles = StyleSheet.create({
     },
 
     loginText: {
+        color: '#222',
+        fontSize: 15,
+        textDecorationLine: 'underline',
+    },
+    registerButton: {
+        marginTop: 20,
+        alignItems: 'center',
+    },
+    registerText: {
         color: '#222',
         fontSize: 15,
         textDecorationLine: 'underline',

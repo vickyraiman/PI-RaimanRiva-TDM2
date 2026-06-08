@@ -2,6 +2,7 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign } from '@expo/vector-icons';
 
 import Home from '../Screens/Home';
+import NuevoPost from "./NuevoPost";
 
 const Tab = createBottomTabNavigator();
 
@@ -11,10 +12,12 @@ function HomeMenu() {
             <Tab.Screen
                 name="Home"
                 component={Home}
-                options={{
-                    headerShown: false, 
-                    tabBarIcon: () => <AntDesign name="home" size={24} color="black"/> 
-                }} 
+                options={{ headerShown: false, tabBarIcon: () => <AntDesign name="home" size={24} color="black"/> }} 
+            />
+            <Tab.Screen
+                name="Nuevo Post"
+                component={NuevoPost}
+                options={{ headerShown: false, tabBarIcon: () => <AntDesign name="plus" size={24} color="black"/> }}
             />
         </Tab.Navigator>
     );

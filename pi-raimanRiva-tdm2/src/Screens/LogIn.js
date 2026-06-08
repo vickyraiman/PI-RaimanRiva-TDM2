@@ -1,5 +1,5 @@
 import { View, Text, Pressable, TextInput, StyleSheet } from 'react-native';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { auth } from '../firebase/config';
 
 function Login(props) {
@@ -25,11 +25,10 @@ function Login(props) {
         }
     }
 
-    auth.onAuthStateChanged(user => {
-        if (user) {
-            props.navigation.navigate('HomeMenu');
-        }
-    });
+auth.onAuthStateChanged(user => {
+    if (user) {
+        props.navigation.navigate('HomeMenu');
+    }});
 
     return (
         <View style={styles.container}>
