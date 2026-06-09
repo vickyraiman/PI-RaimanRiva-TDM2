@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { db } from '../firebase/config';
 import Post from '../Components/Post';
 
-function Home() {
+function Home(props) {
     const [posts, setPosts] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -34,6 +34,7 @@ function Home() {
                         <Post 
                         post={item.data}
                         id={item.id}
+                        navigation={props.navigation}
                         />
                     )}
                 />

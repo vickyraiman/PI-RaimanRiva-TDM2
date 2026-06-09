@@ -53,6 +53,11 @@ function Post(props){
                     <Text style={styles.heart}>🩶</Text>
                 </Pressable>
             }
+
+        <Pressable style={styles.commentButton} 
+            onPress={() => props.navigation.navigate('DetallePost', {id: props.id, post: props.post})}>
+                <Text style={styles.commentButtonText}>Comentar</Text>
+        </Pressable>
     </View>
 )
 }
@@ -94,6 +99,19 @@ const styles = StyleSheet.create({
 
     heart: {
         fontSize: 22,
+    },
+    commentButton: {
+        backgroundColor: '#222',
+        padding: 10,
+        borderRadius: 8,
+        alignItems: 'center',
+        marginTop: 10,
+    },
+    
+    commentButtonText: {
+        color: '#fff',
+        fontSize: 14,
+        fontWeight: 'bold',
     },
 });
 

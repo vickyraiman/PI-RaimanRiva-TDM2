@@ -1,9 +1,9 @@
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AntDesign } from '@expo/vector-icons';
 
-import Home from '../Screens/Home';
 import NuevoPost from "./NuevoPost";
 import Profile from '../Screens/Profile';
+import HomeStack from "./HomeStack";
 
 const Tab = createBottomTabNavigator();
 
@@ -12,7 +12,7 @@ function HomeMenu() {
         <Tab.Navigator>
             <Tab.Screen
                 name="Home"
-                component={Home}
+                component={HomeStack}
                 options={{ headerShown: false, tabBarIcon: () => <AntDesign name="home" size={24} color="black"/> }} 
             />
             <Tab.Screen
