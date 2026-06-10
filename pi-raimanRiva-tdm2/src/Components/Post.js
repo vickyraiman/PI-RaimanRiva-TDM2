@@ -1,22 +1,34 @@
-import {View, Text, StyleSheet, Pressable} from 'react-native';
-import {db, auth} from '../firebase/config';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
+import { db, auth } from '../firebase/config';
 import firebase from "firebase";
+import { useState, useEffect } from 'react';
 
-function Post(props){
+function Post(props) {
 
-    let likes = props.post.likes;
+    const [likes, setLikes] = useState([]);
 
-    if (likes === undefined){
-        likes = [];
+    useEffect(() => {
+        db.collection('posts').doc(props.id).onSnapshot(doc => {
+            if (doc.data().likes !== undefined) {
+                setLikes(doc.data().likes);
+            } else {
+                setLikes([]);
+            }
+        })
+    }, [])
+
+    if (auth.currentUser === null) {
+        return null;
     }
+
     let miEmail = auth.currentUser.email;
     let likeado = likes.includes(miEmail);
 
-    function darLike(){
+    function darLike() {
         db.collection('posts').doc(props.id).update({
             likes: firebase.firestore.FieldValue.arrayUnion(miEmail)
         })
-        .then(() =>{
+        .then(() => {
             console.log('Post likeado');
         })
         .catch(error => {
@@ -24,11 +36,11 @@ function Post(props){
         });
     }
 
-    function sacarLike(){
+    function sacarLike() {
         db.collection('posts').doc(props.id).update({
             likes: firebase.firestore.FieldValue.arrayRemove(miEmail)
         })
-        .then(() =>{
+        .then(() => {
             console.log('Like sacado');
         })
         .catch(error => {
@@ -36,13 +48,13 @@ function Post(props){
         });
     }
 
-    return(
-    <View style={styles.card}>
-        <Text style={styles.email}>{props.post.email}</Text>
-        <Text style={styles.descripcion}>{props.post.descripcion}</Text>
+    return (
+        <View style={styles.card}>
+            <Text style={styles.email}>{props.post.email}</Text>
+            <Text style={styles.descripcion}>{props.post.descripcion}</Text>
 
-        <Text style={styles.likes}>Likes: {likes.length}</Text>
-            
+            <Text style={styles.likes}>Likes: {likes.length}</Text>
+
             {
                 likeado ?
                 <Pressable style={styles.likeButton} onPress={() => sacarLike()}>
@@ -54,12 +66,14 @@ function Post(props){
                 </Pressable>
             }
 
-        <Pressable style={styles.commentButton} 
-            onPress={() => props.navigation.navigate('DetallePost', {id: props.id, post: props.post})}>
+            <Pressable 
+                style={styles.commentButton}
+                onPress={() => props.navigation.navigate('DetallePost', { id: props.id, post: props.post })}
+            >
                 <Text style={styles.commentButtonText}>Comentar</Text>
-        </Pressable>
-    </View>
-)
+            </Pressable>
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -121,8 +135,5 @@ const styles = StyleSheet.create({
         fontWeight: '400',
     },
 });
-
-
-
 
 export default Post;

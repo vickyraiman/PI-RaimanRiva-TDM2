@@ -8,6 +8,8 @@ function Login(props) {
     const [password, setPassword] = useState('');
     const [loginError, setLoginError] = useState('');
 
+    
+
     function onSubmit(email, password) {
         if (email === '' || password === '') {
             setLoginError('Debe completar ambos campos');
@@ -32,7 +34,9 @@ function Login(props) {
     });
 
     return (
+        
         <View style={styles.container}>
+            
             <Text style={styles.title}>Log In</Text>
 
             <TextInput
@@ -140,6 +144,6 @@ const styles = StyleSheet.create({
         color: '#333',
         fontSize: 14,
         textDecorationLine: 'underline',
-    },
+    }
 });
 export default Login;

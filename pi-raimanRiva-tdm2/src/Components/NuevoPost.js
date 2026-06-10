@@ -24,6 +24,7 @@ function NuevoPost() {
         }
     }
 
+
     return (
         <View style={styles.container}>
             <View style={styles.card}>

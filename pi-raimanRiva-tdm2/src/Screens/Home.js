@@ -70,7 +70,6 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         marginTop: 50,
     },
-
     list: {
         width: '100%',
     },

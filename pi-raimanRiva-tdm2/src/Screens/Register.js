@@ -40,6 +40,7 @@ function Register(props) {
 
     return (
         <View style={styles.container}>
+
             <Text style={styles.title}>Registro</Text>
 
             <TextInput
@@ -165,7 +166,7 @@ const styles = StyleSheet.create({
         fontSize: 14,
         textDecorationLine: 'underline',
         fontFamily: 'Helvetica',
-    },
+    }
 });
 
 export default Register;

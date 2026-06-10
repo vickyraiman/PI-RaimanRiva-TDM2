@@ -7,31 +7,48 @@ import Post from '../Components/Post';
 function Profile(props) {
     const [username, setUsername] = useState("");
     const [posts, setPosts] = useState([]);
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
-        db.collection('users')
-            .where('email', '==', auth.currentUser.email)
-            .onSnapshot(docs => {
-                docs.forEach(doc => {
-                    setUsername(doc.data().username);
-                })
-            })
+        auth.onAuthStateChanged(usuario => {
+            if (usuario !== null) {
+                setUser(usuario);
 
-        db.collection('posts')
-            .where('email', '==', auth.currentUser.email)
-            .onSnapshot(docs => {
-                let posts = [];
-                docs.forEach(doc => {
-                    posts.push({
-                        id: doc.id,
-                        data: doc.data()
-                    });
-                })
+                db.collection('users')
+                    .where('email', '==', usuario.email)
+                    .onSnapshot(docs => {
+                        docs.forEach(doc => {
+                            setUsername(doc.data().username);
+                        })
+                    })
 
-                setPosts(posts);
-            })
+                db.collection('posts')
+                    .orderBy('createdAt', 'desc')
+                    .onSnapshot(docs => {
+                        let posts = [];
 
+                        docs.forEach(doc => {
+                            if (doc.data().email === usuario.email) {
+                                posts.push({
+                                    id: doc.id,
+                                    data: doc.data()
+                                });
+                            }
+                        })
+
+                        setPosts(posts);
+                    })
+            }
+        })
     }, [])
+
+    if (user === null) {
+        return (
+            <View style={styles.container}>
+                <Text>Cargando...</Text>
+            </View>
+        )
+    }
 
     function Logout() {
         auth.signOut()
@@ -47,7 +64,7 @@ function Profile(props) {
         <View style={styles.container}>
             <View style={styles.profileBox}>
                 <Text style={styles.username}>{username}</Text>
-                <Text style={styles.email}>{auth.currentUser.email}</Text>
+                <Text style={styles.email}>{user.email}</Text>
             </View>
 
             <Text style={styles.subtitle}>Mis Publicaciones</Text>
