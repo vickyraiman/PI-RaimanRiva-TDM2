@@ -23,9 +23,14 @@ function Home(props) {
 
     return (
         <View style={styles.container}>
+            <Text style={styles.title}>Bienvenidos</Text>
+            <Text style={styles.subtitle}>Posteos:</Text>
+
             {loading ? (
                 <Text style={styles.loading}>Cargando...</Text>
             ) : (
+                
+
                 <FlatList
                     style={styles.list}
                     data={posts}
@@ -47,27 +52,33 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#f5f5f5',
-        padding: 20,
-        paddingTop: 50,
+        paddingHorizontal: 30,
+        paddingTop: 40,
     },
 
     title: {
-        fontSize: 28,
-        fontWeight: 'bold',
+        fontSize: 46,
+        fontWeight: '300',
+        textAlign: 'center',
         color: '#222',
-        marginBottom: 20,
+        marginBottom: 30,
     },
 
     loading: {
-        fontSize: 16,
+        fontSize: 18,
         color: '#777',
         textAlign: 'center',
-        marginTop: 30,
+        marginTop: 50,
     },
 
     list: {
         width: '100%',
     },
+    subtitle: {
+    fontSize: 22,
+    color: '#222',
+    marginBottom: 20,
+}
 });
 
 export default Home;

@@ -46,7 +46,6 @@ function Profile(props) {
     return (
         <View style={styles.container}>
             <View style={styles.profileBox}>
-                <Text style={styles.title}>Mi Perfil</Text>
                 <Text style={styles.username}>{username}</Text>
                 <Text style={styles.email}>{auth.currentUser.email}</Text>
             </View>
@@ -81,80 +80,83 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#f5f5f5',
-        padding: 20,
-        paddingTop: 60,
+        paddingHorizontal: 24,
+        paddingTop: 35,
     },
 
     profileBox: {
-        backgroundColor: '#fff',
+        backgroundColor: '#ffffff',
         borderWidth: 1,
-        borderColor: '#222',
-        borderRadius: 14,
-        padding: 18,
-        marginBottom: 25,
+        borderColor: '#d9d9d9',
+        borderRadius: 10,
+        padding: 24,
+        marginBottom: 30,
     },
 
     title: {
-        fontSize: 24,
-        fontWeight: 'bold',
+        fontSize: 34,
+        fontWeight: '300',
         color: '#222',
         marginBottom: 18,
     },
 
     username: {
-        fontSize: 22,
-        fontWeight: 'bold',
+        fontSize: 28,
+        fontWeight: '500',
         color: '#222',
-        marginBottom: 6,
+        marginBottom: 4,
     },
 
     email: {
-        fontSize: 14,
-        color: '#555',
-    },
-
-    logoutButton: {
-        backgroundColor: '#ffc4c4',
-        borderWidth: 1,
-        borderColor: '#222',
-        borderRadius: 10,
-        padding: 14,
-        alignItems: 'center',
-        marginTop: 20,
-    },
-
-    logoutText: {
-        color: '#222',
-        fontSize: 16,
-        fontWeight: 'bold',
+        fontSize: 15,
+        color: '#777',
     },
 
     subtitle: {
-        fontSize: 22,
-        fontWeight: 'bold',
+        fontSize: 30,
+        fontWeight: '300',
         color: '#222',
-        marginBottom: 15,
+        marginBottom: 20,
+    },
+
+    logoutButton: {
+        backgroundColor: '#06477c',
+        height: 50,
+        width: 240,
+        borderRadius: 6,
+        justifyContent: 'center',
+        alignItems: 'center',
+        alignSelf: 'center',
+        marginTop: 25,
+        marginBottom: 20,
+    },
+
+    logoutText: {
+        color: '#fff',
+        fontSize: 16,
+        fontWeight: '400',
     },
 
     postBox: {
-        backgroundColor: '#fff',
+        backgroundColor: '#ffffff',
         borderWidth: 1,
-        borderColor: '#222',
-        borderRadius: 14,
-        padding: 14,
-        marginBottom: 12,
+        borderColor: '#d9d9d9',
+        borderRadius: 10,
+        padding: 18,
+        marginBottom: 16,
     },
 
     postText: {
         fontSize: 16,
-        color: '#222',
+        color: '#333',
     },
 
     noPosts: {
-        fontSize: 15,
+        fontSize: 16,
         color: '#777',
         textAlign: 'center',
-        marginTop: 20,
+        marginTop: 40,
+        marginBottom: 20,
     }
 });
 

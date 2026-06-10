@@ -136,7 +136,6 @@ function DetallePost(props) {
                 }
             </View>
 
-            <Text style={styles.commentsTitle}>Comentarios</Text>
 
             <View style={styles.formBox}>
                 <TextInput
@@ -158,6 +157,7 @@ function DetallePost(props) {
                     <Text style={styles.buttonText}>Comentar</Text>
                 </Pressable>
             </View>
+            <Text style={styles.commentsTitle}>Comentarios</Text>
 
             {
                 comentariosOrdenados.length > 0 ?
@@ -205,76 +205,107 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: '#f5f5f5',
-        padding: 20,
-        paddingTop: 40,
+        paddingHorizontal: 24,
+        paddingTop: 30,
     },
 
     commentBox: {
-        backgroundColor: '#fff',
+        backgroundColor: '#ffffff',
         borderWidth: 1,
-        borderColor: '#222',
-        borderRadius: 14,
-        padding: 14,
-        marginBottom: 12,
+        borderColor: '#d9d9d9',
+        borderRadius: 10,
+        padding: 18,
+        marginBottom: 18,
+        width: '100%',
     },
 
     email: {
         fontSize: 13,
-        color: '#555',
-        fontWeight: 'bold',
-        marginBottom: 6,
+        color: '#222',
+        fontWeight: '600',
+        marginBottom: 8,
     },
 
     descripcion: {
         fontSize: 17,
-        color: '#222',
-        lineHeight: 22,
+        color: '#333',
+        lineHeight: 23,
+        marginBottom: 8,
     },
 
     commentsTitle: {
-        fontSize: 22,
-        fontWeight: 'bold',
+        fontSize: 32,
+        fontWeight: '300',
         color: '#222',
-        marginTop: 8,
-        marginBottom: 15,
-    },
-
-    commentEmail: {
-        fontSize: 12,
-        color: '#555',
-        fontWeight: 'bold',
-        marginBottom: 5,
-    },
-
-    commentText: {
-        fontSize: 15,
-        color: '#222',
-        lineHeight: 20,
-    },
-
-    emptyText: {
-        fontSize: 15,
-        color: '#777',
         textAlign: 'center',
-        marginTop: 25,
+        marginTop: 6,
+        marginBottom: 20,
     },
+
     formBox: {
-        backgroundColor: '#fff',
+        backgroundColor: '#ffffff',
         borderWidth: 1,
-        borderColor: '#222',
-        borderRadius: 14,
-        padding: 14,
-        marginBottom: 18,
+        borderColor: '#d9d9d9',
+        borderRadius: 10,
+        padding: 18,
+        marginBottom: 22,
     },
 
     input: {
-        backgroundColor: '#f8f8f8',
-        borderWidth: 1,
-        borderColor: '#ccc',
+        backgroundColor: '#f2f2f2',
+        borderWidth: 0,
         borderRadius: 8,
-        padding: 12,
-        fontSize: 15,
-        marginBottom: 10,
+        padding: 14,
+        fontSize: 16,
+        marginBottom: 14,
+        color: '#333',
+        minHeight: 70,
+    },
+
+    button: {
+        backgroundColor: '#06477c',
+        padding: 14,
+        borderRadius: 6,
+        alignItems: 'center',
+        alignSelf: 'center',
+        width: 220,
+    },
+
+    buttonText: {
+        color: '#fff',
+        fontWeight: '400',
+        fontSize: 16,
+    },
+
+    commentEmail: {
+        fontSize: 13,
+        color: '#222',
+        fontWeight: '600',
+        marginBottom: 8,
+    },
+
+    commentText: {
+        fontSize: 17,
+        color: '#333',
+        lineHeight: 23,
+        marginBottom: 6,
+    },
+
+    likes: {
+        fontSize: 14,
+        color: '#444',
+        marginTop: 8,
+        marginBottom: 4,
+        fontWeight: '400',
+    },
+
+    likeButton: {
+        marginTop: 4,
+        alignSelf: 'flex-start',
+    },
+
+    heart: {
+        fontSize: 22,
     },
 
     error: {
@@ -284,31 +315,11 @@ const styles = StyleSheet.create({
         textAlign: 'center',
     },
 
-    button: {
-        backgroundColor: '#222',
-        padding: 12,
-        borderRadius: 8,
-        alignItems: 'center',
-    },
-
-    buttonText: {
-        color: '#fff',
-        fontWeight: 'bold',
+    emptyText: {
         fontSize: 15,
-    },
-    likes: {
-        fontSize: 14,
-        color: '#222',
-        marginTop: 10,
-        fontWeight: 'bold',
-    },
-    likeButton: {
-        marginTop: 8,
-        alignSelf: 'flex-start',
-    },
-
-    heart: {
-        fontSize: 22,
+        color: '#777',
+        textAlign: 'center',
+        marginTop: 25,
     },
 });
 

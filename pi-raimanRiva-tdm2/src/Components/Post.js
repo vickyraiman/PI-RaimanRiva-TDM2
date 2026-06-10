@@ -64,33 +64,35 @@ function Post(props){
 
 const styles = StyleSheet.create({
     card: {
-        backgroundColor: '#fff',
+        backgroundColor: '#ffffff',
         borderWidth: 1,
-        borderColor: '#222',
-        borderRadius: 14,
-        padding: 14,
-        marginBottom: 12,
+        borderColor: '#d9d9d9',
+        borderRadius: 10,
+        padding: 18,
+        marginBottom: 20,
         width: '100%',
+        fontFamily: 'Helvetica',
     },
 
     email: {
         fontSize: 12,
-        color: '#555',
-        fontWeight: 'bold',
-        marginBottom: 6,
+        color: '#222',
+        fontWeight: '600',
+        marginBottom: 10,
     },
 
     descripcion: {
-        fontSize: 16,
-        color: '#222',
-        marginBottom: 10,
-        lineHeight: 22,
+        fontSize: 18,
+        color: '#333',
+        marginBottom: 12,
+        lineHeight: 24,
+        fontFamily: 'Helvetica',
     },
 
     likes: {
-        fontSize: 14,
-        color: '#222',
-        marginBottom: 6,
+        fontSize: 15,
+        color: '#444',
+        marginBottom: 8,
     },
 
     likeButton: {
@@ -98,20 +100,25 @@ const styles = StyleSheet.create({
     },
 
     heart: {
-        fontSize: 22,
+        fontSize: 24,
     },
+
     commentButton: {
-        backgroundColor: '#222',
-        padding: 10,
-        borderRadius: 8,
+        position: 'absolute',
+        right: 20,
+        bottom: 18,
+        backgroundColor: '#06477c',
+        width: 140,
+        height: 42,
+        borderRadius: 6,
+        justifyContent: 'center',
         alignItems: 'center',
-        marginTop: 10,
     },
-    
+
     commentButtonText: {
         color: '#fff',
-        fontSize: 14,
-        fontWeight: 'bold',
+        fontSize: 15,
+        fontWeight: '400',
     },
 });
 

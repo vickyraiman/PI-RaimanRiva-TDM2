@@ -1,4 +1,4 @@
-import {View, Text, StyleSheet, TextInput, Pressable} from 'react-native';
+import { View, Text, StyleSheet, TextInput, Pressable } from 'react-native';
 import { useState } from 'react';
 import { auth, db } from '../firebase/config';
 
@@ -15,7 +15,7 @@ function Register(props) {
             setRegisterError('El email debe contener un @');
         } else if (password.length < 6) {
             setRegisterError('La contraseña debe tener al menos 6 caracteres');
-        }else {
+        } else {
             auth.createUserWithEmailAndPassword(email, password)
                 .then(response => {
                     db.collection('users').add({
@@ -35,7 +35,7 @@ function Register(props) {
                 .catch(error => {
                     setRegisterError('No se pudo crear el usuario');
                 });
-        }   
+        }
     }
 
     return (
@@ -70,7 +70,7 @@ function Register(props) {
             {
                 registerError !== '' ?
                     <Text style={styles.error}>{registerError}</Text>
-                :
+                    :
                     null
             }
 
@@ -87,27 +87,36 @@ function Register(props) {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        padding: 25,
+        width: '90%',
+        maxWidth: 430,
+        minHeight: 520,
+        alignSelf: 'center',
+        marginTop: 90,
+        padding: 35,
         justifyContent: 'center',
-        backgroundColor: '#f1f1f1',
+        backgroundColor: '#ffffff',
+        borderRadius: 12,
+        borderWidth: 1,
+        borderColor: '#e0e0e0',
     },
 
     title: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        marginBottom: 25,
+        fontSize: 36,
+        fontWeight: '400',
+        marginBottom: 45,
         textAlign: 'center',
+        color: '#222',
+        fontFamily: 'Helvetica',
     },
 
     field: {
-        backgroundColor: '#fff',
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 8,
-        padding: 12,
-        marginBottom: 15,
-        fontSize: 16,
+        backgroundColor: '#f2f2f2',
+        borderWidth: 0,
+        borderRadius: 10,
+        padding: 14,
+        marginBottom: 25,
+        fontSize: 20,
+        color: '#333',
     },
 
     error: {
@@ -118,37 +127,44 @@ const styles = StyleSheet.create({
     },
 
     buttonBlue: {
-        backgroundColor: '#222',
-        padding: 14,
-        borderRadius: 8,
+        backgroundColor: '#06477c',
+        padding: 16,
+        borderRadius: 6,
         alignItems: 'center',
-        marginTop: 5,
+        marginTop: 25,
+        width: 220,
+        alignSelf: 'center',
     },
 
     buttonText: {
         color: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
+        fontSize: 22,
+        fontWeight: '400',
+        fontFamily: 'Helvetica',
     },
 
     loginButton: {
-        marginTop: 20,
+        marginTop: 8,
         alignItems: 'center',
     },
 
     loginText: {
-        color: '#222',
-        fontSize: 15,
+        color: '#333',
+        fontSize: 14,
         textDecorationLine: 'underline',
+        fontFamily: 'Helvetica',
     },
+
     registerButton: {
-        marginTop: 20,
+        marginTop: 8,
         alignItems: 'center',
     },
+
     registerText: {
-        color: '#222',
-        fontSize: 15,
+        color: '#333',
+        fontSize: 14,
         textDecorationLine: 'underline',
+        fontFamily: 'Helvetica',
     },
 });
 

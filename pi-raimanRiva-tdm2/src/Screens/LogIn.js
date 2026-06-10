@@ -25,105 +25,120 @@ function Login(props) {
         }
     }
 
-auth.onAuthStateChanged(user => {
-    if (user) {
-        props.navigation.navigate('HomeMenu');
-    }});
+    auth.onAuthStateChanged(user => {
+        if (user) {
+            props.navigation.navigate('HomeMenu');
+        }
+    });
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Login</Text>
-    
+            <Text style={styles.title}>Log In</Text>
+
             <TextInput
                 style={styles.input}
                 keyboardType='email-address'
                 placeholder='Email:'
                 onChangeText={text => setEmail(text)}
-                value={email} 
+                value={email}
             />
-    
+
             <TextInput
                 style={styles.input}
                 keyboardType='default'
                 placeholder='Password:'
                 secureTextEntry={true}
                 onChangeText={text => setPassword(text)}
-                value={password} 
+                value={password}
             />
-    
+
             {
                 loginError !== '' ?
-                <Text style={styles.error}>{loginError}</Text>
-                :
-                null
+                    <Text style={styles.error}>{loginError}</Text>
+                    :
+                    null
             }
-    
+
             <Pressable style={styles.button} onPress={() => onSubmit(email, password)}>
                 <Text style={styles.buttonText}>Entrar a la App</Text>
             </Pressable>
-    
+
             <Pressable style={styles.registerButton} onPress={() => props.navigation.navigate('Register')}>
                 <Text style={styles.registerText}>¿No tenés cuenta? Registrate</Text>
-            </Pressable>  
-            
+            </Pressable>
+
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
-        padding: 25,
+        width: '90%',
+        maxWidth: 430,
+        minHeight: 520,
+        alignSelf: 'center',
+        marginTop: 90,
+        padding: 35,
         justifyContent: 'center',
-        backgroundColor: '#f1f1f1',
+        backgroundColor: '#ffffff',
+        borderRadius: 12,
+        borderWidth: 1,
+        borderColor: '#e0e0e0',
     },
 
     title: {
-        fontSize: 30,
-        fontWeight: 'bold',
-        marginBottom: 25,
+        fontSize: 36,
+        fontWeight: '400',
+        marginBottom: 45,
         textAlign: 'center',
+        color: '#222',
+        fontFamily: 'Arial',
     },
 
     input: {
-        backgroundColor: '#fff',
-        borderWidth: 1,
-        borderColor: '#ccc',
-        borderRadius: 8,
-        padding: 12,
-        marginBottom: 15,
-        fontSize: 16,
+        backgroundColor: '#f2f2f2',
+        borderWidth: 0,
+        borderRadius: 10,
+        padding: 14,
+        marginBottom: 25,
+        fontSize: 20,
+        color: '#333',
+        fontFamily: 'Helvetica',
     },
 
     error: {
         color: 'red',
         textAlign: 'center',
+        fontFamily: 'Helvetica',
         marginBottom: 15,
         fontSize: 14,
     },
 
     button: {
-        backgroundColor: '#222',
-        padding: 14,
-        borderRadius: 8,
+        backgroundColor: '#06477c',
+        padding: 16,
+        borderRadius: 6,
         alignItems: 'center',
-        marginTop: 5,
+        marginTop: 25,
+        width: 220,
+        alignSelf: 'center',
     },
 
     buttonText: {
         color: '#fff',
-        fontSize: 16,
-        fontWeight: 'bold',
+        fontSize: 22,
+        fontWeight: '400',
+        fontFamily: 'Helvetica',
     },
 
     registerButton: {
-        marginTop: 20,
+        marginTop: 8,
         alignItems: 'center',
     },
 
     registerText: {
-        color: '#222',
-        fontSize: 15,
+        color: '#333',
+        fontSize: 14,
         textDecorationLine: 'underline',
     },
 });
